@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
+
 class Course(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
@@ -53,6 +54,13 @@ class Booking(models.Model):
     purchase_date = models.DateTimeField(null=True, blank=True)
     payment_confirmed = models.BooleanField(default=False)
 
+    @property
+    def is_active(self):
+        return self.webinar.is_active
+
+    @property
+    def days_remaining(self):
+        return 20 - (timezone.now() - self.purchase_date).days
 
     def is_access_active(self):
         """Проверяет, активен ли доступ к контенту (20 дней с момента покупки)."""

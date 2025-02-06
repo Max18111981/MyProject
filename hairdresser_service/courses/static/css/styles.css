@@ -1,6 +1,6 @@
 body {
     background-color: rgba(169, 169, 169, 0.65); /* Цвет с прозрачностью */
-    background-image: url('../images/PHOTO-2025-01-30-21-11-27 2.jpg');
+    /* background-image: url('../images/PHOTO-2025-01-30-21-11-27 2.jpg'); */
     background-size: contain; /* Масштабирует изображение, чтобы оно покрывало всю область */
     background-position: center; /* Центрирует изображение */
     background-repeat: no-repeat; /* Запрещает повторение изображения */
@@ -42,7 +42,7 @@ body {
     transition: transform 0.3s ease;
 }
 
-.card:hover {
+.list-wrapper .card:hover {
     transform: translateY(-5px);
 }
 
@@ -59,8 +59,12 @@ body {
 
 .btn-primary:hover {
     background-color: #5a32a3;
-    transform: scale(1.05);
+    /* transform: scale(1.05); */
 }
 
+
+.btn-primary:active {
+    background-color: #5a32a3 !important;
+}
 
 

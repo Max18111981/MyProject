@@ -20,13 +20,13 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'course_list' %}#courses">Курсы</a>
+                        <a class="nav-link" href="{% url 'course_list' %}">Курсы</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'video_list' %}#videos">Видео</a>
+                        <a class="nav-link" href="{% url 'video_list' %}">Видео</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'webinar_list' %}#webinars">Вебинары</a>
+                        <a class="nav-link" href="{% url 'webinar_list' %}">Вебинары</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-auto">
@@ -53,14 +53,14 @@
         </div>
     </nav>
     <main class="flex-grow-1">
-        <div class="container mt-4">
+        {% comment %} <div class="container mt-4"> {% endcomment %}
             {% block content %}
             {% endblock %}
-        </div>
+        {% comment %} </div> {% endcomment %}
     </main>
     <footer class="footer mt-auto">
         <div class="container text-center">
-            <p>&copy; 2025 Сервис для парикмахеров-колористов. Все права защищены.</p>
+            <p class="mb-0">&copy; 2025 Сервис для парикмахеров-колористов. Все права защищены.</p>
         </div>
     </footer>
 

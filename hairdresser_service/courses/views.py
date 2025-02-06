@@ -162,7 +162,7 @@ def user_profile(request):
     bookings = Booking.objects.filter(user=request.user, is_paid=True)
 
     # Фильтруем записи, у которых доступ ещё активен
-    active_bookings = [booking for booking in bookings if booking.is_access_active()]
+    active_bookings = [booking for booking in bookings if booking.is_access_active() and booking.is_active]
 
     context = {
         'active_bookings': active_bookings,
