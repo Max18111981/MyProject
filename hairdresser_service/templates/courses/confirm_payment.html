@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{%  load static %}
+{% block content %}
+<div class="container">
+    <h1>Подтверждение оплаты</h1>
+    <p>Пользователь: {{ booking.user.username }}</p>
+    <p>Видео: {{ booking.video.title }}</p>
+    <p>Дата запроса: {{ booking.booking_date }}</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary">Подтвердить оплату</button>
+    </form>
+</div>
+{% endblock %}

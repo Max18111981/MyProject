@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <h1 class="text-center">Личный кабинет</h1>
+    <h2>Ваши активные покупки:</h2>
+    <div class="row">
+        {% for booking in active_bookings %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            {% if booking.video %}
+                                {{ booking.video.title }}
+                            {% elif booking.course %}
+                                {{ booking.course.title }}
+                            {% elif booking.webinar %}
+                                {{ booking.webinar.title }}
+                            {% endif %}
+                        </h5>
+                        <p class="card-text">
+                            {% if booking.video %}
+                                <a href="{% url 'watch_video' booking.video.id %}" class="btn btn-primary">Смотреть</a>
+                            {% elif booking.course %}
+                                <a href="{% url 'watch_course' booking.course.id %}" class="btn btn-primary">Смотреть</a>
+                            {% elif booking.webinar %}
+                                {% if booking.webinar.webinar_url %}
+                                    <a href="{{ booking.webinar.webinar_url }}" class="btn btn-primary" target="_blank">Присоединиться к вебинару</a>
+                                {% else %}
+                                    <p class="text-danger">Ссылка на вебинар отсутствует.</p>
+                                {% endif %}
+                            {% endif %}
+                        </p>
+                        <p class="text-muted">
+                            Доступен до: {{ booking.purchase_date|date:"d.m.Y" }} (осталось {{ booking.days_remaining }} дней)
+                        </p>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <p>У вас нет активных покупок.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

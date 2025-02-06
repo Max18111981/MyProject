@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h1>Запись на курс: {{ course.title }}</h1>
+<p>Цена: {{ course.price }} руб.</p>
+
+<form method="post">
+    {% csrf_token %}
+    <p>Для оплаты перейдите в Telegram: <a href="https://t.me/your_telegram">ссылка</a></p>
+    <button type="submit" class="btn btn-primary">Подтвердить запись</button>
+</form>
+<a href="{% url 'home' %}" class="btn btn-secondary mt-2">На главную</a>
+{% endblock %}

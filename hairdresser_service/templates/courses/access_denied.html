@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <h1>Доступ закрыт</h1>
+    <p>Доступ к этому видео закрыт. Пожалуйста, оплатите для просмотра.</p>
+    {% if days_remaining > 0 %}
+        <p>Осталось дней доступа: {{ days_remaining }}</p>
+    {% endif %}
+    <a href="{% url 'home' %}" class="btn btn-primary">На главную</a>
+</div>
+{% endblock %}

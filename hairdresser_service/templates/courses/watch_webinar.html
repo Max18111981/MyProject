@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <h1>{{ webinar.title }}</h1>
+    <p>{{ webinar.description }}</p>
+    <p>Цена: {{ webinar.price }} руб.</p>
+    <p>Дата проведения: {{ webinar.date }}</p>
+
+    {% if webinar.webinar_url %}
+        <p><a href="{{ webinar.webinar_url }}" class="btn btn-primary" target="_blank">Перейти к вебинару</a></p>
+    {% else %}
+        <p>Ссылка на вебинар пока недоступна.</p>
+    {% endif %}
+
+    <a href="{% url 'webinar_list' %}" class="btn btn-secondary">Назад к списку вебинаров</a>
+</div><a href="{% url 'home' %}" class="btn btn-secondary">На главную</a>
+           
+{% endblock %}

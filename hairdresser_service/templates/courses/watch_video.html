@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{%  load static %}
+{% block content %}
+<div class="card mb-4">
+    <div class="card-body">
+        <h1 class="card-title">{{ video.title }}</h1>
+        <div class="embed-responsive embed-responsive-16by9 mb-3">
+            <video controls class="embed-responsive-item">
+                <source src="{{ video.video_file.url }}" type="video/mp4">
+                Ваш браузер не поддерживает видео.
+            </video>
+        </div>
+        <a href="{% url 'home' %}" class="btn btn-secondary mt-2">На главную</a>
+    </div>
+</div>
+{% endblock %}

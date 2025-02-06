@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <h1 class="text-center">Добро пожаловать в сервис для парикмахеров-колористов!</h1>
+    <p class="lead text-center">Здесь вы найдёте курсы, видео и вебинары для повышения своих навыков.</p>
+
+    <div class="row mt-5">
+        <div class="col-md-4 text-center">
+            <h2>Курсы</h2>
+            <p>Изучайте новые техники с нашими курсами.</p>
+            <a href="{% url 'course_list' %}" class="btn btn-primary">Перейти к курсам</a>
+        </div>
+        <div class="col-md-4 text-center">
+            <h2>Видео</h2>
+            <p>Смотрите обучающие видео в любое время.</p>
+            <a href="{% url 'video_list' %}" class="btn btn-primary">Перейти к видео</a>
+        </div>
+        <div class="col-md-4 text-center">
+            <h2>Вебинары</h2>
+            <p>Участвуйте в живых вебинарах с экспертами.</p>
+            <a href="{% url 'webinar_list' %}" class="btn btn-primary">Перейти к вебинарам</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

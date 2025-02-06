@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="card mb-4">
+        <div class="card-body">
+            <h1 class="card-title">{{ course.title }}</h1>
+            <p class="card-text">{{ course.description }}</p>
+            <p class="text-muted">Цена: {{ course.price }} руб.</p>
+            <p class="text-muted">Дата начала: {{ course.start_date|date:"d.m.Y" }}</p>
+            <p class="text-muted">Дата окончания: {{ course.end_date|date:"d.m.Y" }}</p>
+
+            {% if course.image %}
+                <img src="{{ course.image.url }}" alt="{{ course.title }}" class="img-fluid mb-3">
+            {% endif %}
+        
+            {% if course.video_file %}
+                <div class="embed-responsive embed-responsive-16by9 mb-3">
+                    <video controls class="embed-responsive-item">
+                        <source src="{{ course.video_file.url }}" type="video/mp4">
+                        Ваш браузер не поддерживает видео.
+                    </video>
+                </div>
+            {% endif %}
+
+            <a href="{% url 'home' %}" class="btn btn-secondary">На главную</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

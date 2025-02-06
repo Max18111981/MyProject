@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <h1>Оплата видео: {{ video.title }}</h1>
+    <p>Цена: {{ video.price }} руб.</p>
+    <p>Для оплаты переведите {{ video.price }} руб. на карту:</p>
+    <p><strong>Номер карты:</strong> 1234 5678 9012 3456</p>
+    <p><strong>Получатель:</strong> Иван Иванов</p>
+    <p>После оплаты отправьте скриншот перевода администратору в Telegram: <a href="https://t.me/your_telegram">@your_telegram</a>.</p>
+    
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary">Купить видео</button>
+    </form>
+    
+    <a href="{% url 'home' %}" class="btn btn-secondary mt-2">На главную</a>
+</div>
+{% endblock %}
