@@ -2,16 +2,20 @@
 {% load static %}
 {% block content %}
 <div class="container">
-    <h1 class="text-center">Вебинары</h1>
-    <div class="row">
+    <h1 class="text-center my-4">Вебинары</h1>
+    <div class="row list-wrapper">
         {% for webinar in webinars %}
             <div class="col-md-4 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ webinar.title }}</h5>
-                        <p class="card-text">{{ webinar.description|truncatechars:100 }}</p>
-                        <p class="text-muted">Цена: {{ webinar.price }} руб.</p>
-                        <a href="{% url 'webinar_detail' webinar.id %}" class="btn btn-primary">Подробнее</a>
+                <div class="card h-100">
+                    <div class="card-body d-flex flex-column justify-content-between">
+                        <div>
+                            <h5 class="card-title">{{ webinar.title }}</h5>
+                            <p class="card-text">{{ webinar.description|truncatechars:100 }}</p>
+                            <p class="text-muted">Цена: {{ webinar.price }} руб.</p>
+                        </div>
+                        <div>
+                            <a href="{% url 'webinar_detail' webinar.id %}" class="btn btn-primary">Подробнее</a>
+                        </div>
                     </div>
                 </div>
             </div>

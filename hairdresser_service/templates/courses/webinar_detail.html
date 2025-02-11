@@ -1,24 +1,27 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<div class="card mb-4">
-    {% if webinar.image %}
-        <img src="{{ webinar.image.url }}" class="card-img-top" alt="{{ webinar.title }}">
-    {% endif %}
-    <div class="card-body">
-        <h1 class="card-title">{{ webinar.title }}</h1>
-        <p class="card-text">{{ webinar.description }}</p>
-        <p class="text-muted">Цена: {{ webinar.price }} руб.</p>
-        <p class="text-muted">Дата проведения: {{ webinar.date }}</p>
-
-        {% if user.is_authenticated %}
-            <a href="{% url 'book_webinar' webinar.id %}" class="btn btn-primary">Записаться на вебинар</a>
-        {% else %}
-            <p>Для участия в вебинаре необходимо <a href="{% url 'login' %}">войти</a> и оплатить доступ.</p>
-        {% endif %}
-    
+<div class="container">
+    <div class="card mt-4">
         
-        <a href="{% url 'home' %}" class="btn btn-secondary mt-2">На главную</a>
+        {% if webinar.image %}
+            <img src="{{ webinar.image.url }}" class="card-img-top" alt="{{ webinar.title }}">
+        {% endif %}
+        <div class="card-body">
+            <h1 class="card-title">{{ webinar.title }}</h1>
+            <p class="card-text">{{ webinar.description }}</p>
+            <p class="text-muted">Цена: {{ webinar.price }} руб.</p>
+            <p class="text-muted">Дата проведения: {{ webinar.date }}</p>
+    
+            {% if user.is_authenticated %}
+                <a href="{% url 'book_webinar' webinar.id %}" class="btn btn-primary">Записаться на вебинар</a>
+            {% else %}
+                <p>Для участия в вебинаре необходимо <a href="{% url 'login' %}">войти</a> и оплатить доступ.</p>
+            {% endif %}
+        
+            
+            <a href="{% url 'webinar_list' %}" class="btn btn-secondary">Назад</a>
+        </div>
     </div>
 </div>
 {% endblock %}

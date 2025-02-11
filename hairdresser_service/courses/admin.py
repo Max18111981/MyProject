@@ -29,3 +29,7 @@ class VideoAdmin(admin.ModelAdmin):
 class BookingAdmin(admin.ModelAdmin):
     list_display = ('user', 'course', 'webinar', 'video', 'booking_date', 'is_paid')
     list_filter = ('is_paid',)
+
+
+admin.site.site_header = "Управление сервисом"
+admin.site.site_title = "Админка hairdresser_service"
