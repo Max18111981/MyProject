@@ -23,6 +23,11 @@ body {
 .nav-link {
     color: #555555;
 }
+.active {
+     color: #5a32a3 !important;
+     font-weight: bold;
+     
+}
 
 .nav-link:hover {
     color: #000000 ;

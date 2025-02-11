@@ -8,7 +8,30 @@
 
             <form method="post">
                 {% csrf_token %}
-                {{ form.as_p }}
+
+                <div class="form-group">
+                    <label for="id_username">Имя пользователя:</label>
+                    {{ form.username }}
+                    {% comment %} <input type="text" name="username" class="form-control" id="id_username" required> {% endcomment %}
+                </div>
+
+                <div class="form-group">
+                    <label for="id_username">Фамилия пользователя:</label>
+                    {{ form.lastname }}
+                    {% comment %} <input type="text" name="username" class="form-control" id="id_username" required> {% endcomment %}
+                </div>
+
+                <div class="form-group">
+                    <label for="id_username">Пароль:</label>
+                    {{ form.password1 }}
+                    {% comment %} <input type="text" name="username" class="form-control" id="id_username" required> {% endcomment %}
+                </div>
+
+                <div class="form-group">
+                    <label for="id_username">Подтверждение пароля:</label>
+                    {{ form.password2 }}
+                    {% comment %} <input type="text" name="username" class="form-control" id="id_username" required> {% endcomment %}
+                </div>
                 <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
                 <a href="{% url 'home' %}" class="btn btn-secondary">На главную</a>
             </form>

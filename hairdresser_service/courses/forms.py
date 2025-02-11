@@ -18,3 +18,5 @@ class VideoForm(forms.ModelForm):
     class Meta:
         model = Video
         fields = ['title', 'description', 'price', 'video_file', 'is_active']
+
+
