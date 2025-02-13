@@ -1,8 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
+from pyexpat.errors import messages
+
 from .models import Course, Webinar, Video, Booking
-from .forms import CourseForm, WebinarForm, VideoForm
+from .forms import CourseForm, WebinarForm, VideoForm, CustomUserCreationForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 from django.utils import timezone
@@ -103,13 +105,14 @@ def buy_video(request, video_id):
 
 def register(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user)
+            messages.success(request, 'Регистрация прошла успешно!')
             return redirect('home')
     else:
-        form = UserCreationForm()
+        form = CustomUserCreationForm()
     return render(request, 'registration/register.html', {'form': form})
 
 
