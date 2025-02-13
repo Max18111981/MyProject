@@ -28,11 +28,20 @@ class CustomUserCreationForm(UserCreationForm):
     last_name = forms.CharField(
         max_length=30,
         required=True,
-        widget=forms.TextInput(attrs={'placeholder': 'Введите вашу фамилию'})
+        widget=forms.TextInput(attrs={
+            'placeholder': 'Введите вашу фамилию',
+            'class': 'form-control'
+            })
     )
     email = forms.EmailField(
         required=True,
-        widget=forms.EmailInput(attrs={'placeholder': 'Введите ваш email'})
+        widget=forms.EmailInput(attrs={'placeholder': 'Введите ваш email', 'class': 'form-control'})
+    )
+    password1 = forms.CharField(
+        widget=forms.PasswordInput(attrs={'placeholder': 'Введите пароль', 'class': 'form-control'})
+    )
+    password2 = forms.CharField(
+        widget=forms.PasswordInput(attrs={'placeholder': 'Повторите пароль', 'class': 'form-control'})
     )
 
     def clean_last_name(self):
@@ -53,7 +62,6 @@ class CustomUserCreationForm(UserCreationForm):
         model = User
         fields = ['username', 'last_name', 'email', 'password1', 'password2']
         widgets = {
-            'username': forms.TextInput(attrs={'placeholder': 'Введите имя пользователя'}),
-            'password1': forms.PasswordInput(attrs={'placeholder': 'Введите пароль'}),
-            'password2': forms.PasswordInput(attrs={'placeholder': 'Подтвердите пароль'}),
+            'username': forms.TextInput(attrs={'placeholder': 'Введите имя пользователя', 'class': 'form-control'}),
+            
         }
