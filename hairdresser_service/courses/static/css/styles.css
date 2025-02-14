@@ -82,3 +82,16 @@ input:focus::placeholder {
     color: #ccc;
 }
 
+
+.modal-content {
+    background-color: #333333 !important;
+}
+
+.modal-header {
+  color: #ffffff !important;
+}
+
+.modal-body {
+    color: #ffffff !important;
+}
+

@@ -2,11 +2,11 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 from pyexpat.errors import messages
-
+from django.contrib import messages
 from .models import Course, Webinar, Video, Booking
 from .forms import CourseForm, WebinarForm, VideoForm, CustomUserCreationForm
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import login
+from django.contrib.auth import login, authenticate
 from django.utils import timezone
 from .models import Video, Course, Webinar
 
@@ -103,6 +103,20 @@ def buy_video(request, video_id):
     return render(request, 'courses/buy_video.html', {'video': video})
 
 
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('home')  # Перенаправление на главную страницу
+        else:
+            # Ошибка аутентификации
+            return render(request, 'courses/home.html', {'error': 'Неправильное имя пользователя или пароль'})
+    return render(request, 'courses/user_profile.html')
+
+
 def register(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
@@ -113,7 +127,7 @@ def register(request):
             return redirect('home')
     else:
         form = CustomUserCreationForm()
-    return render(request, 'registration/register.html', {'form': form})
+    return render(request, 'registration/register.html', {'register_form': form})
 
 
 @login_required
