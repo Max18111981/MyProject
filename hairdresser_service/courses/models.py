@@ -32,10 +32,13 @@ class Webinar(models.Model):
 
 
 class Video(models.Model):
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=255)
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
     video_file = models.FileField(upload_to='videos/')
+    preview_file = models.FileField(upload_to='previews/')
+    thumbnail = models.ImageField(upload_to='thumbnails/', blank=True, null=True)
+    duration = models.CharField(max_length=10, blank=True, null=True)  # Например, "0:10"
     is_active = models.BooleanField(default=True)
     trailer_url = models.URLField(blank=True, null=True)
 

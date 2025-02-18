@@ -7,6 +7,9 @@
         {% for course in courses %}
             <div class="col-md-4 mb-4">
                 <div class="card h-100">
+                    {% if course.image %}
+                        <div class="card-bg" style="background-image: url('{{ course.image.url }}');"></div>
+                    {% endif %}
                     <div class="card-body d-flex flex-column justify-content-between">
                         <div>
                             <h5 class="card-title">{{ course.title }}</h5>

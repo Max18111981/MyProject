@@ -6,16 +6,40 @@
     <div class="row list-wrapper">
         {% for video in videos %}
             <div class="col-md-4 mb-4">
-                <div class="card h-100">
-                    <div class="card-body d-flex flex-column justify-content-between">
-                        <div>
-                            <h5 class="card-title">{{ video.title }}</h5>
-                            <p class="card-text">{{ video.description|truncatechars:100 }}</p>
-                            <p class="text-muted">Цена: {{ video.price }} руб.</p>
+                <div class="video-container">
+                    <div class="video-thumbnail">
+                        <video class="video-preview" preload="auto" loop muted playsinline>
+                            <source src="{{ video.preview_file.url }} #t=0.1" type="video/mp4">
+                            <source src="{{ video.preview_file.url }} #t=0.1" type="video/webm">
+                            Ваш браузер не поддерживает видео.
+                        </video>
+                        <div class="thumbnail-image">
+                            {% if video.thumbnail %}
+                                <img src="{{ video.thumbnail.url }}" alt="Превью видео">
+                            {% else %}
+                                <img src="https://via.placeholder.com/148x83" alt="Превью видео">
+                            {% endif %}
                         </div>
-                        <div>
-                            <a href="{% url 'video_detail' video.id %}" class="btn btn-primary">Подробнее</a>
-                        </div>    
+                        
+                        <div class="play-button">
+                            <svg height="32" width="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                                <path class="circle" d="M0 16C0 7.163 7.163 0 16 0s16 7.163 16 16-7.163 16-16 16S0 24.837 0 16Z"></path>
+                                <path class="triangle" d="M13 10.92v10.16a1 1 0 0 0 1.573.819l7.257-5.08a1 1 0 0 0 0-1.638l-7.256-5.08a1 1 0 0 0-1.574.82Z"></path>
+                            </svg>
+                        </div>
+                        <div class="video-duration">
+                            <span>{{ video.duration }}</span>
+                        </div>
+                    </div>
+                    <div class="video-description">
+                        <div class="description-text">
+                            {{ video.description|truncatechars:100 }}
+                        </div>
+                        <div class="source-info">
+                            <span class="source-name">{{ video.title }}</span> · <span class="date">{{ video.created_at|date:"d M Y" }}</span>
+                        </div>
+                        <p class="text-prise">Цена: {{ video.price }} руб.</p>
+                        <a href="{% url 'video_detail' video.id %}" class="btn btn-primary">Подробнее</a>
                     </div>
                 </div>
             </div>
@@ -24,4 +48,8 @@
         {% endfor %}
     </div>
 </div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/scripts.js' %}"></script>
 {% endblock %}

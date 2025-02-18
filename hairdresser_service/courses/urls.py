@@ -18,6 +18,7 @@ urlpatterns = [
     path('video/<int:video_id>/', views.video_detail, name='video_detail'),
     path('courses/', views.course_list, name='course_list'),
     path('videos/', views.video_list, name='video_list'),
+    path('videos/<int:video_id>/', views.video_detail, name='video_detail'),
     path('webinars/', views.webinar_list, name='webinar_list'),
     path('book/course/<int:course_id>/', views.book_course, name='book_course'),
     path('book/webinar/<int:webinar_id>/', views.book_webinar, name='book_webinar'),
