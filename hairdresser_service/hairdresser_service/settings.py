@@ -69,6 +69,10 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'courses.processors.register_form'
             ],
+            "match_extension": ".jinja",
+            'filters': {
+                "startswith": "courses.filters.startswith",
+            }
         },
     },
 ]

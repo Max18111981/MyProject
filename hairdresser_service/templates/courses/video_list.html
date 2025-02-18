@@ -7,29 +7,29 @@
         {% for video in videos %}
             <div class="col-md-4 mb-4">
                 <div class="video-container">
-                    <div class="video-thumbnail">
-                        <video class="video-preview" preload="auto" loop muted playsinline>
-                            <source src="{{ video.preview_file.url }} #t=0.1" type="video/mp4">
-                            <source src="{{ video.preview_file.url }} #t=0.1" type="video/webm">
+                    <div class="video-thumbnail" style="opacity: 1;" >
+                        <video class="video-preview" loop muted style="opacity: 1;">
+                            <source src="{{ video.preview_file.url }}" type="video/mp4">
+                            <source src="{{ video.preview_file.url }}#t=0.1" type="video/webm">
                             Ваш браузер не поддерживает видео.
                         </video>
-                        <div class="thumbnail-image">
+                        {% comment %} <div class="thumbnail-image">
                             {% if video.thumbnail %}
                                 <img src="{{ video.thumbnail.url }}" alt="Превью видео">
                             {% else %}
                                 <img src="https://via.placeholder.com/148x83" alt="Превью видео">
                             {% endif %}
-                        </div>
+                        </div> {% endcomment %}
                         
-                        <div class="play-button">
+                        <div class="play-button" style="transition: opacity 0.3s ease;">
                             <svg height="32" width="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
                                 <path class="circle" d="M0 16C0 7.163 7.163 0 16 0s16 7.163 16 16-7.163 16-16 16S0 24.837 0 16Z"></path>
                                 <path class="triangle" d="M13 10.92v10.16a1 1 0 0 0 1.573.819l7.257-5.08a1 1 0 0 0 0-1.638l-7.256-5.08a1 1 0 0 0-1.574.82Z"></path>
                             </svg>
                         </div>
-                        <div class="video-duration">
+                        {% comment %} <div class="video-duration">
                             <span>{{ video.duration }}</span>
-                        </div>
+                        </div> {% endcomment %}
                     </div>
                     <div class="video-description">
                         <div class="description-text">
