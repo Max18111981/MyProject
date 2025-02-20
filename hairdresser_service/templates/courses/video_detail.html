@@ -2,56 +2,51 @@
 {% load static %}
 {% block content %}
 <div class="container d-flex justify-content-center">
-    <div class="card mt-4 w-50">
-        <div class="card-body">
-            <div class="video-container">
-                <a aria-label="{{ video.title }}" href="{% url 'video_detail' video.id %}">
-                    <div class="video-thumbnail" aria-hidden="true">
-                        <div class="thumbnail-image">
-                            {% if video.thumbnail %}
-                                <img src="{{ video.thumbnail.url }}" alt="Превью видео">
-                            {% else %}
-                                <img src="https://via.placeholder.com/148x83" alt="Превью видео">
-                            {% endif %}
-                        </div>
-                        <div class="play-button">
-                            <svg height="32" width="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-                                <path class="circle" d="M0 16C0 7.163 7.163 0 16 0s16 7.163 16 16-7.163 16-16 16S0 24.837 0 16Z"></path>
-                                <path class="triangle" d="M13 10.92v10.16a1 1 0 0 0 1.573.819l7.257-5.08a1 1 0 0 0 0-1.638l-7.256-5.08a1 1 0 0 0-1.574.82Z"></path>
-                            </svg>
-                        </div>
-                        <div class="video-duration">
-                            <span>{{ video.duration }}</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div>
-                <h1 class="card-title">{{ video.title }}</h1>
-                <p class="card-text">{{ video.description }}</p>
-                <p class="text-muted">Цена: {{ video.price }} руб.</p>
+    
         
-                {% if video.trailer_url %}
-                    <div class="embed-responsive embed-responsive-16by9 mb-3">
-                        <iframe class="embed-responsive-item" src="{{ video.trailer_url }}" allowfullscreen></iframe>
+        <div class="video-container mt-4 w-50">
+                <div class="video-thumbnail" style="opacity: 1;" >
+                    <video class="video-preview" loop autoplay muted style="opacity: 1;">
+                        <source src="{{ video.preview_file.url }}" type="video/mp4">
+                        <source src="{{ video.preview_file.url }}#t=0.1" type="video/webm">
+                        Ваш браузер не поддерживает видео.
+                    </video>
+                    
+                    <div class="play-button" style="transition: opacity 0.3s ease;">
+                        <svg height="32" width="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                            <path class="circle" d="M0 16C0 7.163 7.163 0 16 0s16 7.163 16 16-7.163 16-16 16S0 24.837 0 16Z"></path>
+                            <path class="triangle" d="M13 10.92v10.16a1 1 0 0 0 1.573.819l7.257-5.08a1 1 0 0 0 0-1.638l-7.256-5.08a1 1 0 0 0-1.574.82Z"></path>
+                        </svg>
                     </div>
-                {% endif %}
-        
-                {% if access_denied %}
-                    <div class="alert alert-warning">
-                        Доступ к этому видео закрыт. Пожалуйста, оплатите для просмотра.
-                    </div>
-                {% endif %}
-        
-                {% if user.is_authenticated %}
-                    <a href="{% url 'buy_video' video.id %}" class="btn btn-primary">Купить видео</a>
-                {% else %}
-                    <p>Для покупки видео необходимо <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">войти</a>.</p>
-                {% endif %}
-                <a href="{% url 'video_list' %}" class="btn btn-secondary">Назад</a>
-            </div>
+                        
+                </div>
+            
+                <div class="video-description" >
+                    <h1 class="card-title">{{ video.title }}</h1>
+                    <p class="card-text">{{ video.description }}</p>
+                    <p class="text-muted">Цена: {{ video.price }} руб.</p>
                 
-        </div>
-    </div>
+                    {% if video.trailer_url %}
+                        <div class="embed-responsive embed-responsive-16by9 mb-3">
+                            <iframe class="embed-responsive-item" src="{{ video.trailer_url }}"     allowfullscreen></iframe>
+                        </div>
+                    {% endif %}
+                    
+                    {% if access_denied %}
+                        <div class="alert alert-warning">
+                            Доступ к этому видео закрыт. Пожалуйста, оплатите для просмотра.
+                        </div>
+                    {% endif %}
+                    
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'buy_video' video.id %}" class="btn btn-primary">Купить видео</a>
+                    {% else %}
+                        <p>Для покупки видео необходимо <a href="#" data-bs-toggle="modal"  data-bs-target="#loginModal">войти</a>.</p>
+                    {% endif %}
+                    <a href="{% url 'video_list' %}" class="btn btn-secondary">Назад</a>
+                </div>
+        </div>    
+        
+    
 </div>
 {% endblock %}
