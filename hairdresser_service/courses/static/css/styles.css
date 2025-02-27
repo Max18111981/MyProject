@@ -145,6 +145,7 @@ body {
     font-size: 1rem;
     margin-bottom: 1rem;
     color: #ffffff;
+    overflow-wrap: break-word
 }
 
 
@@ -188,17 +189,17 @@ input:focus::placeholder {
 }
 
 .text-center {
-    font-family: "Birthstone", serif !important;
-    font-weight: bold !important;
-    font-style: italic !important;
+    font-family: "Marck Script", serif !important;
+    /* font-weight: bold !important;
+    font-style: italic !important; */
 }
 
 .lead .text-center {
-    font-weight: 300 !important;
+    /* font-weight: 300 !important; */
 }
 
 
-.text-center.reveal {
+.reveal {
 
   span {
     opacity: 0;
@@ -251,59 +252,6 @@ input:focus::placeholder {
   }
 }
 
-.lead .text-center.reveal {
-    span {
-    opacity: 0;
-    transform: scale(0);
-    animation: fadeIn 2.4s forwards;
-  }
-
-  &::before,
-  &::after {
-    position: absolute;
-    content: "";
-    top: 0;
-    bottom: 0;
-    background: white;
-    opacity: 0;
-    transform: scale(0);
-  }
-
-  &::before {
-    left: 50%;
-    animation: slideLeft 1.5s cubic-bezier(0.7, -0.6, 0.3, 1.5) forwards;
-  }
-
-  &::after {
-    right: 50%;
-    animation: slideRight 1.5s cubic-bezier(0.7, -0.6, 0.3, 1.5) forwards;
-  }
-}
-
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes slideLeft {
-  to {
-    left: -6%;
-    opacity: 1;
-    transform: scale(0.9);
-  }
-}
-
-@keyframes slideRight {
-  to {
-    right: -6%;
-    opacity: 1;
-    transform: scale(0.9);
-  }
-}
-
-
 
 .video-container {
     position: relative;
@@ -315,8 +263,8 @@ input:focus::placeholder {
 }
 
 .video-container.detail {
-    width: 70% !important;
-    height: 600px;
+    /* width: 70% !important; */
+    min-height: 600px;
 }
 
 .video-thumbnail {
@@ -396,7 +344,7 @@ input:focus::placeholder {
 }
 
 .video-description.detail {
-    height: 300px;
+    min-height: 300px;
 
 }
 

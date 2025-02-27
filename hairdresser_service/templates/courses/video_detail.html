@@ -1,43 +1,51 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<div class="container">
-        
-        <div class="video-container detail mt-4">
-                <div class="video-thumbnail detail" style="opacity: 1;">
-                    <video class="video-preview detail" loop autoplay muted style="opacity: 1;">
-                        <source src="{{ video.preview_file.url }}" type="video/mp4">
-                        <source src="{{ video.preview_file.url }}#t=0.1" type="video/webm">
-                        Ваш браузер не поддерживает видео.
-                    </video>
-                    
-                    <div class="play-button" style="transition: opacity 0.3s ease;">
-                        <svg height="32" width="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-                            <path class="circle" d="M0 16C0 7.163 7.163 0 16 0s16 7.163 16 16-7.163 16-16 16S0 24.837 0 16Z"></path>
-                            <path class="triangle" d="M13 10.92v10.16a1 1 0 0 0 1.573.819l7.257-5.08a1 1 0 0 0 0-1.638l-7.256-5.08a1 1 0 0 0-1.574.82Z"></path>
-                        </svg>
-                    </div>
-                        
-                </div>
-            
-                <div class="video-description detail" >
-                    <h1 class="card-title">{{ video.title }}</h1>
-                    <p class="card-text">{{ video.description }}</p>
-                    <p class="text-muted">Цена: {{ video.price }} руб.</p>
+<div class="container pb-4">
+        <div class="row d-flex justify-content-center">
+            <div class="col-12 col-xl-9">
                 
-                    {% if access_denied %}
-                        <div class="alert alert-warning">
-                            Доступ к этому видео закрыт. Пожалуйста, оплатите для просмотра.
+                <div class="video-container detail mt-4">
+                        <div class="video-thumbnail detail" style="opacity: 1;">
+                            <video class="video-preview detail" loop autoplay muted style="opacity: 1;">
+                                <source src="{{ video.preview_file.url }}" type="video/mp4">
+                                <source src="{{ video.preview_file.url }}#t=0.1" type="video/webm">
+                                Ваш браузер не поддерживает видео.
+                            </video>
+                            
+                            <div class="play-button" style="transition: opacity 0.3s ease;">
+                                <svg height="32" width="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                                    <path class="circle" d="M0 16C0 7.163 7.163 0 16 0s16 7.163 16 16-7.163 16-16 16S0 24.837 0 16Z"></path>
+                                    <path class="triangle" d="M13 10.92v10.16a1 1 0 0 0 1.573.819l7.257-5.08a1 1 0 0 0 0-1.638l-7.256-5.08a1 1 0 0 0-1.574.82Z"></path>
+                                </svg>
+                            </div>
+                                
                         </div>
-                    {% endif %}
                     
-                    {% if user.is_authenticated %}
-                        <a href="{% url 'buy_video' video.id %}" class="btn btn-primary">Купить видео</a>
-                    {% else %}
-                        <p>Для покупки видео необходимо <a href="#" data-bs-toggle="modal"  data-bs-target="#loginModal">войти</a>.</p>
-                    {% endif %}
-                    <a href="{% url 'video_list' %}" class="btn btn-secondary">Назад</a>
+                        <div class="video-description detail" >
+                            <h1 class="card-title">{{ video.title }}</h1>
+                            <p class="card-text">{{ video.description }}</p>
+                            <p class="text-muted">Цена: {{ video.price }} руб.</p>
+                        
+                            {% if access_denied %}
+                                <div class="alert alert-warning">
+                                    Доступ к этому видео закрыт. Пожалуйста, оплатите для просмотра.
+                                </div>
+                            {% endif %}
+                            
+                            {% if user.is_authenticated %}
+                                <div>
+                                <a href="{% url 'buy_video' video.id %}" class="btn btn-primary">Купить видео</a>
+                                </div>
+                            {% else %}
+                                <p>Для покупки видео необходимо <a href="#" data-bs-toggle="modal"  data-bs-target="#loginModal">войти</a>.</p>
+                            {% endif %}
+                            <div>
+                            <a href="{% url 'video_list' %}" class="btn btn-secondary">Назад</a>
+                            </div>
+                        </div>
                 </div>
+            </div>
         </div>
 </div>
 {% endblock %}
