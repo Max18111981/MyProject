@@ -20,9 +20,14 @@ body {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
+.navbar-brand:hover {
+    color: #6f42c1;
+}
+
 .nav-link {
     color: #ffffff;
 }
+
 .active {
      color: #6f42c1 !important;
      font-weight: bold;
@@ -30,15 +35,59 @@ body {
 }
 
 .nav-link:hover {
-    color: #000000 ;
+    color: #6f42c1;
 }
 
-.footer {
-    background-color: #333333;
-    color: #ffffff;
-    padding: 20px 0;
-    margin-top: auto;
+.neon {
+    color: #fff;
+    text-shadow:
+    0 0 5px #fff,
+    0 0 10px #fff,
+    0 0 20px #fff,
+    0 0 40px #0ff,
+    0 0 80px #0ff,
+    0 0 90px #0ff,
+    0 0 100px #0ff,
+    0 0 150px #0ff;
 }
+
+
+
+.social-icon {
+            font-size: 24px;
+            margin: 0 10px;
+            color: #fff;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.2);
+            color: #6f42c1; /* Цвет при наведении */
+        }
+
+        /* Стили для футера */
+        .footer {
+            padding: 20px;
+            background-color: #333333;
+            color: #ffffff;
+            text-align: center;
+            margin-top: auto;
+
+        }
+
+        .icons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-icons-left, .social-icons-right {
+            display: flex;
+        }
+
+        .footer p {
+            margin: 0 20px;
+        }
 
 
 .list-wrapper .card:hover {
@@ -115,7 +164,6 @@ body {
     background-color: #5a32a3 !important;
 }
 
-
 /* Стили для плейсхолдеров */
 input::placeholder {
     color: #999;
@@ -150,6 +198,113 @@ input:focus::placeholder {
 }
 
 
+.text-center.reveal {
+
+  span {
+    opacity: 0;
+    transform: scale(0);
+    animation: fadeIn 2.4s forwards;
+  }
+
+  &::before,
+  &::after {
+    position: absolute;
+    content: "";
+    top: 0;
+    bottom: 0;
+    background: white;
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  &::before {
+    left: 50%;
+    animation: slideLeft 1.5s cubic-bezier(0.7, -0.6, 0.3, 1.5) forwards;
+  }
+
+  &::after {
+    right: 50%;
+    animation: slideRight 1.5s cubic-bezier(0.7, -0.6, 0.3, 1.5) forwards;
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideLeft {
+  to {
+    left: -6%;
+    opacity: 1;
+    transform: scale(0.9);
+  }
+}
+
+@keyframes slideRight {
+  to {
+    right: -6%;
+    opacity: 1;
+    transform: scale(0.9);
+  }
+}
+
+.lead .text-center.reveal {
+    span {
+    opacity: 0;
+    transform: scale(0);
+    animation: fadeIn 2.4s forwards;
+  }
+
+  &::before,
+  &::after {
+    position: absolute;
+    content: "";
+    top: 0;
+    bottom: 0;
+    background: white;
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  &::before {
+    left: 50%;
+    animation: slideLeft 1.5s cubic-bezier(0.7, -0.6, 0.3, 1.5) forwards;
+  }
+
+  &::after {
+    right: 50%;
+    animation: slideRight 1.5s cubic-bezier(0.7, -0.6, 0.3, 1.5) forwards;
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideLeft {
+  to {
+    left: -6%;
+    opacity: 1;
+    transform: scale(0.9);
+  }
+}
+
+@keyframes slideRight {
+  to {
+    right: -6%;
+    opacity: 1;
+    transform: scale(0.9);
+  }
+}
+
+
+
 .video-container {
     position: relative;
     width: 100%;
@@ -159,12 +314,21 @@ input:focus::placeholder {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
 }
 
+.video-container.detail {
+    width: 70% !important;
+    height: 600px;
+}
+
 .video-thumbnail {
     position: relative;
     width: 100%;
     height: 150px;
     background-color: #000;
     transition: opacity 0.3s ease;
+}
+
+.video-thumbnail.detail {
+    height: 300px !important;
 }
 
 .thumbnail-image img {
@@ -182,6 +346,10 @@ input:focus::placeholder {
     object-fit: cover;
     opacity: 0;
     transition: opacity 0.3s ease;
+}
+
+.video-preview.detail {
+    height: 300px !important;
 }
 
 .video-container:hover .video-thumbnail {
@@ -224,6 +392,12 @@ input:focus::placeholder {
 .video-description {
     padding: 12px;
     background-color: #333333 !important;
+    color:  #ffffff;
+}
+
+.video-description.detail {
+    height: 300px;
+
 }
 
 .description-text {

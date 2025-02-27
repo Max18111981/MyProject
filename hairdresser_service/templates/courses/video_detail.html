@@ -1,12 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<div class="container d-flex justify-content-center">
-    
+<div class="container">
         
-        <div class="video-container mt-4 w-50">
-                <div class="video-thumbnail" style="opacity: 1;" >
-                    <video class="video-preview" loop autoplay muted style="opacity: 1;">
+        <div class="video-container detail mt-4">
+                <div class="video-thumbnail detail" style="opacity: 1;">
+                    <video class="video-preview detail" loop autoplay muted style="opacity: 1;">
                         <source src="{{ video.preview_file.url }}" type="video/mp4">
                         <source src="{{ video.preview_file.url }}#t=0.1" type="video/webm">
                         Ваш браузер не поддерживает видео.
@@ -21,17 +20,11 @@
                         
                 </div>
             
-                <div class="video-description" >
+                <div class="video-description detail" >
                     <h1 class="card-title">{{ video.title }}</h1>
                     <p class="card-text">{{ video.description }}</p>
                     <p class="text-muted">Цена: {{ video.price }} руб.</p>
                 
-                    {% if video.trailer_url %}
-                        <div class="embed-responsive embed-responsive-16by9 mb-3">
-                            <iframe class="embed-responsive-item" src="{{ video.trailer_url }}"     allowfullscreen></iframe>
-                        </div>
-                    {% endif %}
-                    
                     {% if access_denied %}
                         <div class="alert alert-warning">
                             Доступ к этому видео закрыт. Пожалуйста, оплатите для просмотра.
@@ -45,8 +38,6 @@
                     {% endif %}
                     <a href="{% url 'video_list' %}" class="btn btn-secondary">Назад</a>
                 </div>
-        </div>    
-        
-    
+        </div>
 </div>
 {% endblock %}
